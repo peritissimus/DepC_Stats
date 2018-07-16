@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <script src="http://www.chartjs.org/dist/2.7.2/Chart.bundle.js"></script>
+  <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
+</head>
+
+<body>
+  <div id="container" style="width: 75%;">
+    <canvas id="canvas"></canvas>
+  </div>
+  <script>
+    // var UnderG = ['AE', 'AED', 'CE','CED' ,'CH','CHD', 'CS','CSD', 'EC','ECD', 'EE','EED', 'HS', 'IE', 'IM','IMD', 'MA', 'ME','MED', 'MF','MFD', 'MT','MTD', 'PH', 'QDE'];
+    var color = Chart.helpers.color;
+    var barChartData = {
+      labels: ['AE','AG','BT', 'CE', 'CH', 'CS', 'CY','EC', 'EE', 'EX','GG','HS', 'ID','IE', 'IM', 'MA', 'ME', 'MF', 'MT', 'NA','PH', 'QDE'],
+      // label: ['AE', 'AED', 'CE','CED' ,'CH','CHD', 'CS','CSD', 'EC','ECD', 'EE','EED', 'HS', 'IE', 'IM','IMD', 'MA', 'ME','MED', 'MF','MFD', 'MT','MTD', 'PH', 'QDE'];
+
+      datasets: [{
+        label: 'Incoming',
+        backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+        borderColor: window.chartColors.red,
+        borderWidth: 1,
+        data: [6,0,0, 3, 13, 6, 0,6, 7, 0,0,5, 0,10, 7, 6, 12, 4, 0, 0,2, 0]
+      },
+      {
+        label: 'Dual: Incoming',
+        backgroundColor: color(window.chartColors.orange).alpha(0.5).rgbString(),
+        borderColor: window.chartColors.orange,
+        borderWidth: 1,
+        data: [1,0,0, 2, 8, 2, 0,4, 2, 0,0,0, 0,0, 2,0, 7, 4, 2, 0,0, 0]
+      },
+      {
+        label: 'Outgoing',
+        backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+        borderColor: window.chartColors.blue,
+        borderWidth: 1,
+        data: [-9,-9,-8, -13, -12, 0, -6,0, -1, -6,-4,-1, 0,-5, -4, -1, -6, -11, -10, -7,-3,-3]
+      },
+
+      {
+        label: 'Dual: Outgoing',
+        backgroundColor: color(window.chartColors.green).alpha(0.5).rgbString(),
+        borderColor: window.chartColors.green,
+        borderWidth: 1,
+        data: []
+      }
+    ]
+    };
+
+    window.onload = function() {
+      var ctx = document.getElementById('canvas').getContext('2d');
+      window.myBar = new Chart(ctx, {
+        type: 'bar',
+        data: barChartData,
+        options: {
+          responsive: true,
+          legend: {
+            position: 'bottom',
+          },
+          title: {
+            display: true,
+            text: 'DepC Stats'
+          }
+        }
+      });
+
+    };
+  </script>
+</body>
+
+</html>
